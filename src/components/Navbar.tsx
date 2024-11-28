@@ -31,7 +31,7 @@ export default function Navbar() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // Full paths for correct navigation
+  // Navigation links
   const links = [
     { name: 'About', href: '/#about' },
     { name: 'Services', href: '/#services' },
@@ -41,16 +41,16 @@ export default function Navbar() {
   ]
 
   return (
-    <Box as="header" position="sticky" top={0} zIndex={1000} bg="#111827" shadow="md">
-      {/* Main Navbar */}
-      <Flex as="nav" maxW="7xl" mx="auto" px={8} py={4} align="center" justify="space-between">
-        {/* Clickable Logo */}
+    <Box as="header" position="sticky" top={0} zIndex={1000} bg="brand.accent" shadow="md" h="4rem">
+      <Flex as="nav" maxW="7xl" mx="auto" h="100%" px={6} py={{base: 2, md: 4}} align="center" justify="space-between">
+        {/* Logo */}
         <NextLink href="/" passHref>
           <ChakraLink
             fontWeight="bold"
-            fontSize="lg"
-            color="pink.300"
-            _hover={{ textDecoration: 'none', color: 'pink.400' }}
+            fontSize={{ base: 'md', md: 'lg', lg: 'xl' }} // Responsive text size
+            color="brand.primary"
+            _hover={{ textDecoration: 'none', color: 'brand.primaryHover' }}
+            display="inline-block"
           >
             Doinitalash
           </ChakraLink>
@@ -62,10 +62,10 @@ export default function Navbar() {
             <NextLink key={link.name} href={link.href} passHref>
               <ChakraLink
                 fontWeight="medium"
-                fontSize="lg"
-                color="gray.300"
+                fontSize="sm" // Reduced size for a cleaner look
+                color="brand.grayLight"
                 _hover={{
-                  color: 'pink.300',
+                  color: 'brand.primary',
                   textDecoration: 'underline',
                   textDecorationThickness: '2px',
                   textUnderlineOffset: '4px',
@@ -85,7 +85,7 @@ export default function Navbar() {
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
           variant="ghost"
           aria-label="Toggle Navigation"
-          color="pink.300"
+          color="brand.primary"
           size="lg"
         />
       </Flex>
@@ -93,39 +93,40 @@ export default function Navbar() {
       {/* Mobile Fullscreen Menu */}
       <Slide direction="top" in={isOpen} style={{ zIndex: 20 }}>
         <Box
-          bg="gray.900"
-          w="full"
-          h="calc(var(--vh, 1vh) * 100)"
+          bg="brand.accent"
+          w="100vw"
+          h="100vh" // Ensures full-screen height on mobile
           display="flex"
           flexDirection="column"
-          justifyContent="space-between"
-          alignItems="center"
-          px={8}
-          py={6}
+          justifyContent="center" // Vertically centers all content
+          alignItems="center" // Horizontally centers all content
+          px={4}
+          py={0}
+          position="relative"
         >
           {/* Close Button */}
           <IconButton
             position="absolute"
-            top={6}
-            right={6}
+            top={4}
+            right={4}
             onClick={onToggle}
             icon={<CloseIcon />}
             variant="ghost"
             aria-label="Close Menu"
             size="lg"
-            color="pink.300"
+            color="brand.primary"
           />
 
-          {/* Navigation Links */}
-          <VStack spacing={6} align="center" flex={1} justify="center">
+          {/* Mobile Navigation Links */}
+          <VStack spacing={8} align="center"> {/* Adjust spacing for consistent layout */}
             {links.map((link) => (
               <NextLink key={link.name} href={link.href} passHref>
                 <ChakraLink
                   fontWeight="medium"
-                  fontSize="2xl"
-                  color="gray.300"
+                  fontSize="xl" // Large size for mobile readability
+                  color="brand.light"
                   _hover={{
-                    color: 'pink.300',
+                    color: 'brand.primaryHover',
                     textDecoration: 'underline',
                     textDecorationThickness: '2px',
                     textUnderlineOffset: '4px',
@@ -140,32 +141,35 @@ export default function Navbar() {
           </VStack>
 
           {/* Social Media Section */}
-          <Box textAlign="center" mb={8}>
-            <Text fontSize="lg" fontWeight="bold" color="gray.400" mb={3}>
+          <Box textAlign="center" mt={12}>
+            <Text fontSize="lg" fontWeight="bold" color="brand.grayDark" mb={3}>
               Connect with Us
             </Text>
             <HStack justify="center" spacing={6}>
               <Link
                 href="https://www.instagram.com"
                 isExternal
-                color="gray.300"
-                _hover={{ color: 'pink.300' }}
+                aria-label="Visit Instagram"
+                color="brand.grayLight"
+                _hover={{ color: 'brand.primary' }}
               >
                 <FaInstagram size={24} />
               </Link>
               <Link
                 href="https://www.tiktok.com"
                 isExternal
-                color="gray.300"
-                _hover={{ color: 'pink.300' }}
+                aria-label="Visit TikTok"
+                color="brand.grayLight"
+                _hover={{ color: 'brand.primary' }}
               >
                 <FaTiktok size={24} />
               </Link>
               <Link
                 href="https://t.me"
                 isExternal
-                color="gray.300"
-                _hover={{ color: 'pink.300' }}
+                aria-label="Visit Telegram"
+                color="brand.grayLight"
+                _hover={{ color: 'brand.primary' }}
               >
                 <FaTelegram size={24} />
               </Link>
@@ -173,6 +177,7 @@ export default function Navbar() {
           </Box>
         </Box>
       </Slide>
+
     </Box>
   )
 }

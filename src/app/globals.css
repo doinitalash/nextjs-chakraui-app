@@ -14,9 +14,8 @@ html {
 }
 
 body {
-  background-color: #242A36;
-  background: linear-gradient(145deg, rgba(255, 105, 180, 0.5), rgba(128, 0, 128, 0.4));
-  color: #ffffff;
+  background: none;
+  color: inherit;
 }
 
 @media (max-width: 768px) {
