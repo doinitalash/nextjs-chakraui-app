@@ -15,6 +15,7 @@ import NextLink from 'next/link'
 import { useState, useEffect } from 'react'
 import SexyButton from '../../components/SexyButton'
 
+// Motion Box for animated transitions
 const MotionBox = motion(Box)
 
 export default function AboutPage() {
@@ -31,20 +32,28 @@ export default function AboutPage() {
   }, [])
 
   return (
-    <Box as="section" bg="#242A36" color="white" minH="100vh" py={16}>
+    <Box as="section" bg="brand.secondary" color="white" minH="100vh" py={{ base: 12, md: 16 }} px={4}>
       {/* Hero Section */}
-      <VStack spacing={4} textAlign="center" mb={16} px={4}>
-        <Heading fontSize={{ base: '3xl', md: '5xl' }} color="pink.300">
+      <VStack spacing={6} textAlign="center" mb={{ base: 12, md: 16 }}>
+        <Heading
+          fontSize={{ base: '3xl', md: '5xl' }}
+          color="brand.primary" // Using the primary brand color for headings
+          fontFamily="'Playfair Display', serif"
+          fontWeight="bold"
+        >
           About Doinitalash
         </Heading>
-        <Text fontSize={{ base: 'md', md: 'lg' }} maxW="3xl" color="gray.300">
-          Welcome to Doinitalash! We are passionate about enhancing natural beauty through the artistry of lash
-          extensions and empowering aspiring lash artists with exceptional training experiences. Our journey is rooted
-          in innovation, creativity, and a commitment to excellence.
+        <Text
+          fontSize={{ base: 'md', md: 'lg' }}
+          maxW="3xl"
+          color="brand.grayLight"
+          fontFamily="'Roboto', sans-serif"
+        >
+          Welcome to Doinitalash! We are passionate about enhancing natural beauty through the artistry of lash extensions and empowering aspiring lash artists with exceptional training experiences. Our journey is rooted in innovation, creativity, and a commitment to excellence.
         </Text>
       </VStack>
 
-      {/* Masonry Layout */}
+      {/* Masonry Layout for images */}
       <Box px={4} maxW="7xl" mx="auto">
         <chakra.div
           as={Masonry}
@@ -65,7 +74,7 @@ export default function AboutPage() {
               mb={4}
               borderRadius="lg"
               overflow="hidden"
-              bg="gray.700"
+              bg="brand.secondary"
               position="relative"
             >
               <Image
@@ -82,14 +91,13 @@ export default function AboutPage() {
         </chakra.div>
       </Box>
 
-      {/* Closing Section */}
-      <VStack spacing={6} mt={16} px={4} textAlign="center">
-        <Heading fontSize={{ base: '2xl', md: '4xl' }} color="pink.300">
+      {/* Closing Section with Call to Action */}
+      <VStack spacing={6} mt={{ base: 12, md: 16 }} px={4} textAlign="center">
+        <Heading fontSize={{ base: '2xl', md: '4xl' }} color="brand.primary">
           Join Us on Our Journey
         </Heading>
-        <Text fontSize={{ base: 'md', md: 'lg' }} maxW="3xl" color="gray.400">
-          Whether you're looking for the best lash extensions or want to train with the industry's finest, Doinitalash
-          has something for everyone. Explore our gallery to see the artistry and passion behind our work.
+        <Text fontSize={{ base: 'md', md: 'lg' }} maxW="3xl" color="brand.grayDark">
+          Whether you're looking for the best lash extensions or want to train with the industry's finest, Doinitalash has something for everyone. Explore our gallery to see the artistry and passion behind our work.
         </Text>
         <NextLink href="/contact" passHref>
           <ChakraLink _hover={{ textDecoration: 'none' }}>

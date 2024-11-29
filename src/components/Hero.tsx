@@ -48,7 +48,7 @@ export default function Hero() {
     <Box
       as="section"
       id="hero"
-      bgGradient="linear(to-b, pink.500, gray.900)"
+      bgGradient="linear(to-b, brand.primary, brand.secondary)"
       position="relative"
       h="100vh"
       overflow="hidden"
@@ -88,15 +88,22 @@ export default function Hero() {
       >
         <Heading
           size={isMobile ? 'lg' : '2xl'}
+          fontFamily="'Playfair Display', serif"
           bgClip="text"
-          bgGradient="linear(to-r, pink.300, pink.400)"
+          bgGradient="linear(to-r, brand.primary, brand.primaryHover)"
           fontWeight="extrabold"
         >
-          Welcome to Doinitalash
+          Experience the Art of Perfect Lashes
         </Heading>
 
-        <Text fontSize={isMobile ? 'sm' : 'md'} maxW="90%" mx="auto">
-          Experience premium-quality lash extensions designed to elevate your beauty.
+        <Text
+          fontSize={isMobile ? 'sm' : 'md'}
+          fontFamily="'Roboto', sans-serif"
+          maxW="90%"
+          mx="auto"
+        >
+          Elevate your beauty with premium lash extensions designed for bold,
+          glamorous looks.
         </Text>
 
         <SexyButton
@@ -131,7 +138,7 @@ function LavaBlob({
       left={`${x}%`}
       w={`${size}px`}
       h={`${size}px`}
-      bgGradient="radial(pink.400, pink.500, transparent)"
+      bgGradient="radial(brand.primary, brand.primaryHover, transparent)"
       borderRadius="full"
       opacity={0.4}
       animate={{

@@ -5,6 +5,7 @@ import {
   Text,
   Link as ChakraLink,
   VStack,
+  useBreakpointValue,
 } from '@chakra-ui/react'
 import ImageCard from './ImageCard'
 import NextLink from 'next/link'
@@ -29,6 +30,8 @@ export default function AboutUsSection() {
     },
   ]
 
+  const bgColor = useBreakpointValue({ base: 'brand.secondary', md: 'brand.secondary' }) // Dynamic background color
+
   return (
     <Box
       id="about"
@@ -36,16 +39,29 @@ export default function AboutUsSection() {
       pt="calc(var(--header-height, 80px))" // Adjust for fixed navbar height
       pb={{ base: 12, md: 20 }}
       px={4}
-      bg="#242A36"
+      bg={bgColor} // Use brand colors for background
       color="white"
       boxShadow="0 10px 20px rgba(0, 0, 0, 0.5)"
+      borderRadius="lg"
+      transition="background-color 0.3s ease"
     >
       {/* Heading Section */}
       <VStack spacing={4} textAlign="center" mb={{ base: 8, md: 12 }}>
-        <Heading color="pink.300" fontSize={{ base: '2xl', md: '4xl' }}>
+        <Heading
+          color="brand.primary" // Accent color for heading
+          fontSize={{ base: '2xl', md: '4xl' }}
+          fontFamily="'Playfair Display', serif"
+          fontWeight="bold"
+        >
           About
         </Heading>
-        <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.300" maxW="3xl" mx="auto">
+        <Text
+          fontSize={{ base: 'md', md: 'lg' }}
+          color="gray.300"
+          maxW="3xl"
+          mx="auto"
+          fontFamily="'Roboto', sans-serif"
+        >
           At Doinitalash, we specialize in creating stunning lash extensions and training the next generation of lash
           artists. Our expertise combines innovation, artistry, and a touch of elegance to ensure the best results for
           our clients.
@@ -58,17 +74,18 @@ export default function AboutUsSection() {
         spacing={{ base: 6, md: 8 }}
         maxW="7xl"
         mx="auto"
+        py={{ base: 6, md: 10 }} // Padding adjustment for spacing
       >
         {aboutCards.map((card, index) => (
           <ImageCard key={index} {...card} />
         ))}
       </SimpleGrid>
 
-      {/* Learn More Button */}
+      {/* Explore Our Story Button */}
       <Box textAlign="center" mt={{ base: 8, md: 12 }}>
         <NextLink href="/about" passHref>
           <ChakraLink _hover={{ textDecoration: 'none' }}>
-            <SexyButton>Learn More</SexyButton>
+            <SexyButton>Explore Our Story</SexyButton>
           </ChakraLink>
         </NextLink>
       </Box>
