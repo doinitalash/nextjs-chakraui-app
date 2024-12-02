@@ -5,7 +5,6 @@ import {
   Text,
   Link as ChakraLink,
   VStack,
-  useBreakpointValue,
 } from '@chakra-ui/react'
 import ImageCard from './ImageCard'
 import NextLink from 'next/link'
@@ -30,18 +29,15 @@ export default function AboutUsSection() {
     },
   ]
 
-  const bgColor = useBreakpointValue({ base: 'brand.secondary', md: 'brand.secondary' }) // Dynamic background color
-
   return (
     <Box
       id="about"
       as="section"
       pt="calc(var(--header-height, 80px))" // Adjust for fixed navbar height
       pb={{ base: 12, md: 20 }}
-      px={4}
-      bg={bgColor} // Use brand colors for background
+      px={{ base: 4, md: 8 }}
+      bg="brand.secondary" // Use brand colors for background
       color="white"
-      boxShadow="0 10px 20px rgba(0, 0, 0, 0.5)"
       borderRadius="lg"
       transition="background-color 0.3s ease"
     >
@@ -57,7 +53,7 @@ export default function AboutUsSection() {
         </Heading>
         <Text
           fontSize={{ base: 'md', md: 'lg' }}
-          color="gray.300"
+          color="brand.grayLight"
           maxW="3xl"
           mx="auto"
           fontFamily="'Roboto', sans-serif"

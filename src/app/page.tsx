@@ -1,10 +1,10 @@
 'use client'
 
-import { Box, Heading, Text, } from '@chakra-ui/react'
+import { Box, Divider, Heading, Text, } from '@chakra-ui/react'
 import Hero from '../components/Hero'
 import AboutSection from '../components/AboutSection'
 import ServicesSection from '../components/ServicesSection'
-import DynamicWave from '../components/DynamicWave'
+import ProductsSection from '../components/ProductsSection'
 
 export default function Home() {
   return (
@@ -15,42 +15,27 @@ export default function Home() {
       {/* About Section */}
       <AboutSection />
 
-      {/* Wave Divider
-      <Box
-        position="absolute"
-        w="100%"
-        h="80px"
-        overflow="hidden"
-
-        >
-        <Box
-          as="img"
-          src="/wave.svg"
-          alt="Wave Divider"
-          w="100%"
-          h="100%"
-          objectFit="cover"
-        />
-      </Box> */}
-      {/* Dynamic Wave with Animation */}
-      <DynamicWave
-        height={120}
-        scrollSpeed={0.05} // Parallax speed
-        amplitude={15} // Height of the waves
-        frequency={0.02} // Frequency of wave peaks
-        colorTop="#242A36"
-        colorBottom="#1E232C"
+      <Divider
+        borderWidth="2px"
+        borderColor="transparent"
+        bgGradient="linear(to-r, brand.primary, brand.secondary)"
+        h="2px"
+        my={8}
       />
 
       {/* Services Section */}
       <ServicesSection />
 
+      <Divider
+        borderWidth="2px"
+        borderColor="transparent"
+        bgGradient="linear(to-r, brand.primary, brand.secondary)"
+        h="2px"
+        my={8}
+      />
+
       {/* Products Section */}
-      <Section id="products" title="Our Products">
-        <Text>
-          Check out our exclusive line of lash care products designed for long-lasting beauty.
-        </Text>
-      </Section>
+      <ProductsSection></ProductsSection>
 
       {/* Testimonials Section */}
       <Section id="testimonials" title="What Clients Say">

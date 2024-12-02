@@ -172,10 +172,7 @@ export default function ServicePageLayout({
       bg={
         bgImage
           ? `url(${bgImage})`
-          : {
-              base: 'linear-gradient(145deg, rgba(255, 105, 180, 0.7), rgba(200, 50, 120, 0.5))',
-              md: 'linear-gradient(145deg, rgba(255, 105, 180, 0.5), rgba(180, 40, 110, 0.4))',
-            }
+          : 'linear-gradient(145deg, #2C2F33, #23272A)'
       }
       bgAttachment="fixed" // Parallax background effect
       bgSize="cover"
